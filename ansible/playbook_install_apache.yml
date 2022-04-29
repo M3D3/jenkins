@@ -1,0 +1,13 @@
+---
+- name: install apache2 on system
+  hosts: group1
+  vars:
+    srcfile: /home/admin1/ansible/fin62/fin62.ru/
+    dstfile: /var/www/html/
+  tasks:
+  - name: install apache2
+    apt: name=apache2 state=latest
+    when: ansible_os_family=="Debian"
+  - name: copy fin62.ru
+    copy: src={{ item }} dest={{ dstfile }}
+    with_fileglob: "{{ srcfile }}/*.*"

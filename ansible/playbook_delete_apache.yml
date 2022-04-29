@@ -1,0 +1,9 @@
+---
+- name: delete apache2 from system
+  hosts: group1
+  become: yes
+  tasks:
+  - name: stop daemon apache
+    shell: apache2ctl stop   
+  - name: delete apache2
+    apt: name=apache2 state=absent
