@@ -1,0 +1,5 @@
+FROM ubuntu:latest
+RUN apt update\
+&& apt-get install apache2 -qq -y
+EXPOSE 80
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
